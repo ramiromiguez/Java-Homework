@@ -37,7 +37,7 @@ public class Gym {
 	}
 	
 	public static void updateTOtalMoneyEarned(int moneyEarned) {
-		totalMoneyEarned =+ moneyEarned;
+		totalMoneyEarned += moneyEarned;
 	}
 	
 	public int getTotalMoneySpent() {

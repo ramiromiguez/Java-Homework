@@ -19,7 +19,6 @@ public class Buble {
 		bubbleSort(arr, n - 1);
 	}
 
-	// Driver Method
 	public static void main(String[] args) {
 		int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
 

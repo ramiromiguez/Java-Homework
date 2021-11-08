@@ -26,15 +26,21 @@ public class Runner {
 		clientsList.add(manuel);
 		
 		Gym adrenaline = new Gym(instructorsList, clientsList);
-		ramiro.payFees(100);
-		System.out.println(adrenaline.getTotalMoneyEarned());
-		manuel.payFees(100);
-		System.out.println(adrenaline.getTotalMoneyEarned());
-		sergei.receiveSalary(100);
-		System.out.println(sergei.getSalaryEarned());
-		System.out.println("Adrenaline gym has spent: " + adrenaline.getTotalMoneySpent());
 		
+		ramiro.payFees(200);
+		manuel.payFees(200);
+		System.out.println("ramiro paid: "+ramiro.getFeesPaid());
+		System.out.println("ramiro paid: "+manuel.getFeesPaid());
+		System.out.println("The gym earned: "+adrenaline.getTotalMoneyEarned());
+		sergei.receiveSalary(100);
+		System.out.println("Sergei earned: $"+sergei.getSalaryEarned()); 
+		System.out.println("Adrenaline gym has spent: " + adrenaline.getTotalMoneySpent());
+		System.out.println("Adrenaline gym total money is: $"+adrenaline.getTotalMoneyEarned());
+		
+
 		System.out.println(ramiro);
+		System.out.println(manuel);
+		System.out.println(sergei);
 		System.out.println(ramiro.equals(manuel));
 		System.out.println(ramiro.hashCode());
 	}
