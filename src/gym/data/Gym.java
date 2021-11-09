@@ -1,4 +1,4 @@
-package gymAdministrator.data;
+package gym.data;
 
 import java.util.List;
 

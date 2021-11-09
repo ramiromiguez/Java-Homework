@@ -1,18 +1,17 @@
-package gymAdministrator.data;
+package gym.data;
 
 import java.util.Objects;
 
-public class Instructor {
+public abstract class Instructor implements IInstructorInfo{
 	private int id;
 	private String name;
 	private int salary;
-	private int salaryEarned;
+	protected int salaryEarned;
 	
 	public Instructor(int id, String name, int salary) {
 		this.id = id;
 		this.name = name;
 		this.salary = salary;
-		this.salaryEarned = 0;
 	}
 
 	public int getId() {
@@ -43,11 +42,8 @@ public class Instructor {
 		return salaryEarned;
 	}
 	
-	public void receiveSalary(int salary) {
-		salaryEarned =+ salary;
-		Gym.updateTotalMoneySpent(salary);;
-	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Instructor [id=" + id + ", name=" + name + ", salary=" + salary + ", salaryEarned=" + salaryEarned
