@@ -2,7 +2,7 @@ package gym.data;
 
 import java.util.Objects;
 
-public abstract class Client {
+public abstract class Client implements IClientInfo {
 	private int id;
 	private String name;
 	private int feesPaid;

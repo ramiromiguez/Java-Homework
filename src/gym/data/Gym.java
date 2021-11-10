@@ -2,10 +2,10 @@ package gym.data;
 
 import java.util.List;
 
-public class Gym {
+public final class Gym {
 	
-	private List<Client> clients;
-	private List<Instructor> instructors;
+	private final List<Client> clients;
+	private final List<Instructor> instructors;
 	private static int totalMoneyEarned;
 	private static int totalMoneySpent;
 	
@@ -16,23 +16,23 @@ public class Gym {
 		totalMoneySpent = 0;
 	}
 	
-	public List<Instructor> getInstructors(){
+	public final List<Instructor> getInstructors(){
 		return instructors;
 	}
 	
-	public void addInstructor(Instructor instructor) {
+	public final void addInstructor(Instructor instructor) {
 		instructors.add(instructor);
 	}
 	
-	public List<Client> getCliens(){
+	public final List<Client> getClients(){
 		return clients;
 	}
 	
-	public void addClients(Client client) {
+	public final void addClients(Client client) {
 		clients.add(client);
 	}
 	
-	public int getTotalMoneyEarned() {
+	public final int getTotalMoneyEarned() {
 		return totalMoneyEarned;
 	}
 	
@@ -40,7 +40,7 @@ public class Gym {
 		totalMoneyEarned += moneyEarned;
 	}
 	
-	public int getTotalMoneySpent() {
+	public final int getTotalMoneySpent() {
 		return totalMoneySpent;
 	}
 	
