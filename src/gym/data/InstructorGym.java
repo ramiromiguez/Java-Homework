@@ -1,14 +1,26 @@
 package gym.data;
 
-public class InstructorGym extends Instructor implements IInstructorSalary{
+import exceptionContainer.ReceiveSalaryException;
+
+public class InstructorGym extends Instructor {
 	public InstructorGym(int id, String name, int salary) {
 		super(id, name, salary);
 	}
-	
+
 	@Override
-	public void receiveSalary() {
+	public final void receiveSalary() {
 		salaryEarned =+ getSalary();
-		Gym.updateTotalMoneySpent(getSalary());
+		try{
+			if(Gym.getTotalMoneyEarned() < salary) {
+				Gym.updateTotalMoneySpent(getSalary());
+			}
+			else{
+				throw new ReceiveSalaryException();
+			}
+		}
+		catch(ReceiveSalaryException e){
+			e.getMessage();
+		}
 	}
-	
+
 }

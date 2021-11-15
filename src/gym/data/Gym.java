@@ -32,7 +32,7 @@ public final class Gym {
 		clients.add(client);
 	}
 	
-	public final int getTotalMoneyEarned() {
+	public final static int getTotalMoneyEarned() {
 		return totalMoneyEarned;
 	}
 	
@@ -40,7 +40,7 @@ public final class Gym {
 		totalMoneyEarned += moneyEarned;
 	}
 	
-	public final int getTotalMoneySpent() {
+	public int getTotalMoneySpent() {
 		return totalMoneySpent;
 	}
 	

@@ -2,25 +2,35 @@ package gym.runner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import exceptionContainer.NameContainNumberException;
+import exceptionContainer.NullNameException;
 import gym.data.Client;
+import gym.data.ClientGym;
 import gym.data.ClientYoga;
 import gym.data.Gym;
 import gym.data.Instructor;
 import gym.data.InstructorGym;
 import gym.data.InstructorYoga;
-import gym.data.Weight;
+import gym.data.WeightStorage;
 
 public class Runner {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NullNameException, NameContainNumberException {
+		
+		Logger LOG = Logger.getLogger(WeightStorage.class.getName());
+		
 		ClientYoga ramiro = new ClientYoga(1, "Ramiro");
-		Client sergei = new ClientYoga(2, "Sergei");
+		ClientYoga sergei = new ClientYoga(2, "Sergei");
+		ClientGym nina = new ClientGym(1, "Nina");
+		ClientGym teo = new ClientGym(2,"Teo");
 		
 		List<Client> clientsList = new ArrayList<>();
 		clientsList.add(ramiro);
 		clientsList.add(sergei);
 		
-		InstructorYoga manuel = new InstructorYoga(1, "manuel",100, clientsList);
+		InstructorYoga manuel = new InstructorYoga(1, "manuel", 100, clientsList);
 		InstructorGym axel = new InstructorGym(2, "Axel", 800);
 		
 		List<Instructor> instructorsList = new ArrayList<>();
@@ -31,19 +41,18 @@ public class Runner {
 		
 		ramiro.payFees(300);
 		sergei.payFees(300);
-		System.out.println("ramiro paid: "+ramiro.getFeesPaid());
-		System.out.println("ramiro paid: "+sergei.getFeesPaid());
-		System.out.println("The gym earned: "+adrenaline.getTotalMoneyEarned());
+		LOG.log(Level.INFO,"ramiro paid: "+ramiro.getFeesPaid());
+		LOG.log(Level.INFO,"ramiro paid: "+sergei.getFeesPaid());
+		LOG.log(Level.INFO,"The gym earned: "+Gym.getTotalMoneyEarned());
 		manuel.receiveSalary();
-		System.out.println("Sergei earned: $"+manuel.getSalaryEarned()); 
-		System.out.println("Adrenaline gym has spent: " + adrenaline.getTotalMoneySpent());
-		System.out.println("Adrenaline gym total money is: $"+adrenaline.getTotalMoneyEarned());
+		LOG.log(Level.INFO,"Sergei earned: $"+manuel.getSalaryEarned()); 
+		LOG.log(Level.INFO,"Adrenaline gym has spent: " + adrenaline.getTotalMoneySpent());
+		LOG.log(Level.INFO,"Adrenaline gym total money is: $"+Gym.getTotalMoneyEarned());
 		Gym.updateTotalMoneySpent(50);
-		System.out.println("Adrenaline buy a product for $50 now the total money is: $"+adrenaline.getTotalMoneyEarned());
-		Weight.pick5kg(10);
-		Weight.pick5kg(10);
-		Weight.pick5kg(20);
-		Weight.leave5kg(10);
-		Weight.pick10kg(5);
+		LOG.log(Level.INFO,"Adrenaline buy a product for $50 now the total money is: $"+Gym.getTotalMoneyEarned());
+		nina.pick5kg(15);
+		teo.pick5kg(6);
+		nina.leave5kg(10);
+		teo.pick5kg(6);
 	}
 }

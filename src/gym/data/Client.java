@@ -2,17 +2,40 @@ package gym.data;
 
 import java.util.Objects;
 
+import exceptionContainer.NameContainNumberException;
+import exceptionContainer.NullNameException;
+
 public abstract class Client implements IClientInfo {
 	private int id;
 	private String name;
 	private int feesPaid;
 	
-	public Client(int id, String name) {
-		this.id = id;
-		this.name = name;
+	public Client(int id, String name) throws NullNameException, NameContainNumberException{
 		feesPaid = 0;
+		this.id = id;
+		
+		boolean found = false;
+		StringBuilder sb = new StringBuilder();
+	    for(char c : name.toCharArray()){
+		        if(Character.isDigit(c)){
+		            sb.append(c);
+		            found = true;
+		        } else if(found){
+		            break;                
+		        }
+		    }
+		
+		if(name == null || name.trim().isEmpty()) {
+            throw new NullNameException();
+		}
+		if(found == true){
+			throw new NameContainNumberException(); 
+		}
+		else {
+			this.name = name;
+		}
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -28,12 +51,12 @@ public abstract class Client implements IClientInfo {
 	public void setFeesPaid(int feesPaid) {
 		this.feesPaid = feesPaid;
 	}
-	
+
 	public void payFees(int fees) {
 		feesPaid += fees;
 		Gym.updateTOtalMoneyEarned(feesPaid);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", name=" + name + ", feesPaid=" + feesPaid + "]";
@@ -55,6 +78,5 @@ public abstract class Client implements IClientInfo {
 		Client other = (Client) obj;
 		return feesPaid == other.feesPaid && id == other.id && Objects.equals(name, other.name);
 	}
-	
-	
+
 }

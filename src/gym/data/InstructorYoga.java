@@ -3,7 +3,9 @@ package gym.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InstructorYoga extends Instructor implements IInstructorSalary{
+import exceptionContainer.ReceiveSalaryException;
+
+public class InstructorYoga extends Instructor{
 	List<Client> clients = new ArrayList<>();
 	public InstructorYoga(int id, String name, int salary, List<Client> clients) {
 		super(id, name, salary);
@@ -11,11 +13,22 @@ public class InstructorYoga extends Instructor implements IInstructorSalary{
 	}
 
 	@Override
-	public void receiveSalary() {
+	public final void receiveSalary() {
 		int length = clients.size();
 		int total = length*getSalary();
-		salaryEarned =+ total;
-		Gym.updateTotalMoneySpent(total);
+		try {
+			if(Gym.getTotalMoneyEarned() >= total) {
+				salaryEarned =+ total;
+				Gym.updateTotalMoneySpent(total);
+			}
+			else {
+				throw new ReceiveSalaryException();
+			}
+		}
+		catch(ReceiveSalaryException e){
+			e.getMessage();
+		}
+		
 	}
 	
 }

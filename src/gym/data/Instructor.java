@@ -2,10 +2,10 @@ package gym.data;
 
 import java.util.Objects;
 
-public abstract class Instructor implements IInstructorInfo{
+public abstract class Instructor implements IInstructorInfo, IInstructorSalary{
 	private int id;
 	private String name;
-	private int salary;
+	protected int salary;
 	protected int salaryEarned;
 	
 	public Instructor(int id, String name, int salary) {
