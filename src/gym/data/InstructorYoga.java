@@ -5,30 +5,26 @@ import java.util.List;
 
 import exceptionContainer.ReceiveSalaryException;
 
-public class InstructorYoga extends Instructor{
-	List<Client> clients = new ArrayList<>();
-	public InstructorYoga(int id, String name, int salary, List<Client> clients) {
+public class InstructorYoga extends Instructor {
+	List<ClientYoga> clients = new ArrayList<>();
+
+	public InstructorYoga(int id, String name, int salary, List<ClientYoga> clients) {
 		super(id, name, salary);
 		this.clients = clients;
 	}
 
 	@Override
-	public final void receiveSalary() {
+	public final void receiveSalary() throws ReceiveSalaryException {
 		int length = clients.size();
-		int total = length*getSalary();
-		try {
-			if(Gym.getTotalMoneyEarned() >= total) {
-				salaryEarned =+ total;
-				Gym.updateTotalMoneySpent(total);
-			}
-			else {
-				throw new ReceiveSalaryException();
-			}
+		int total = length * getSalary();
+
+		if (Gym.getTotalMoneyEarned() >= total) {
+			salaryEarned = +total;
+			Gym.updateTotalMoneySpent(total);
+		} else {
+			throw new ReceiveSalaryException();
 		}
-		catch(ReceiveSalaryException e){
-			e.getMessage();
-		}
-		
+
 	}
-	
+
 }

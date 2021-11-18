@@ -57,7 +57,7 @@ public class WeightStorage {
 		WeightStorage.quantity = quantity;
 	}
 
-	public static void pick5kg(int quantity) {
+	public static void pick5kg(int quantity) throws QuantityUnavailableException {
 		try {
 			if (WeightStorage.fiveKgQuantity >= quantity) {
 				WeightStorage.setFiveKgQuantity(WeightStorage.getFiveKgQuantity() - quantity);

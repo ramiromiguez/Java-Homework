@@ -1,5 +1,8 @@
 package gym.data;
 
+
+import exceptionContainer.ReceiveSalaryException;
+
 public interface IInstructorInfo {
 	public int getId();
 	public void setId(int id);
@@ -8,4 +11,5 @@ public interface IInstructorInfo {
 	public int getSalary();
 	public void setSalary(int salary);
 	public int getSalaryEarned();
+	void receiveSalary() throws ReceiveSalaryException;
 }

@@ -1,5 +1,7 @@
 package gym.data;
 
+import exceptionContainer.ReceiveSalaryException;
+
 public interface IInstructorSalary {
-	void receiveSalary();
+	void receiveSalary() throws ReceiveSalaryException;
 }

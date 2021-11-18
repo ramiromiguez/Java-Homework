@@ -10,7 +10,7 @@ public class ClientGym extends Client{
 	}
 	
 	public final void pick5kg(int weight){
-		WeightStorage.pick5kg(weight);
+		WeightStorage.pick10kg(weight);
 	}
 	
 	public final void pick10kg(int weight){
